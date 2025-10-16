@@ -4,50 +4,59 @@
   </div>
   <form>
 
-    <!-- ID Telephone -->
+
     <div class="col-sm-2 col-md-2 col-lg-2">
       <label>ID Téléphone</label>
       <input type="text" [(ngModel)]="newTelephone.idtel" name="idtel" class="form-control">
     </div>
 
-    <!-- Logo Telephone -->
+
+
     <div class="col-sm-4 col-md-4 col-lg-4">
       <label>Logo Téléphone (URL)</label>
       <input type="text" [(ngModel)]="newTelephone.logoTel" name="logoTel" class="form-control">
     </div>
 
-    <!-- Nom Telephone -->
+
     <div class="col-sm-4 col-md-4 col-lg-4">
       <label>Nom Téléphone</label>
       <input type="text" [(ngModel)]="newTelephone.nomTel" name="nomTel" class="form-control">
     </div>
 
-    <!-- Description Telephone -->
+
     <div class="col-sm-6 col-md-6 col-lg-6">
       <label>Description</label>
       <textarea [(ngModel)]="newTelephone.desTEL" name="desTEL" class="form-control"></textarea>
     </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>statu</label>
+      <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="newIdSat">
+        @for(i of Statuts; track i.idSat){
+        <option [value]="i.idSat"> {{i.nomSat}} </option>
+        }
+      </select>
+    </div>
 
-    <!-- Prix Telephone -->
+
     <div class="col-sm-2 col-md-2 col-lg-2">
       <label>Prix Téléphone</label>
       <input type="number" [(ngModel)]="newTelephone.prixTel" name="prixTel" class="form-control">
     </div>
 
-    <!-- Date Creation -->
+
     <div class="col-sm-4 col-md-4 col-lg-4">
       <label>Date création</label>
       <input type="date" [(ngModel)]="newTelephone.dateCreation" name="dateCreation" class="form-control">
     </div>
 
-    <!-- Bouton Ajouter -->
+
     <div class="mt-2">
       <button type="submit" (click)="addTelephone()" class="btn btn-success">
         Ajouter
       </button>
     </div>
 
-    <!-- Message -->
+
 
   </form>
 </div>

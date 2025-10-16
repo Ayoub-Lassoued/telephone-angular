@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Telephone } from '../model/telephone.model';
 import { TelephoneService } from '../services/telephoneservice';
+import { Statut } from '../model/statut.model';
 
 @Component({
   selector: 'app-update-telephone',
@@ -15,6 +16,9 @@ import { TelephoneService } from '../services/telephoneservice';
 })
 export class UpdateTelephone implements OnInit {
   currentTelephone = new Telephone();
+  Status!: Statut[];
+  updatedSatId!: number;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -23,14 +27,17 @@ export class UpdateTelephone implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Récupération de l'ID depuis l'URL et consultation du téléphone
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.currentTelephone = this.telephoneService.consulterTelephone(id);
-    console.log('Téléphone à modifier : ', this.currentTelephone);
+
+    this.Status = this.telephoneService.listeCategories();
+    console.log(this.currentTelephone);
+    this.currentTelephone = this.telephoneService.consulterTelephone(this.activatedRoute.snapshot.params['id']);
+
   }
 
   updateTelephone() {
+    this.currentTelephone.statut = this.telephoneService.consulterCategorie(this.updatedSatId);
+
     this.telephoneService.updateTelephone(this.currentTelephone);
-    this.router.navigate(['telephoness']); // redirection vers la liste
+    this.router.navigate(['telephoness']);
   }
 }

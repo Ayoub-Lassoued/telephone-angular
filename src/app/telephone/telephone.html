@@ -3,11 +3,13 @@
     <div class="card-body">
       <table class="table table-striped">
         <tr>
-          <th>N°</th>
+
           <th>Id</th>
           <th>Logo</th>
           <th>Nom</th>
+
           <th>Description</th>
+          <th>Statu</th>
           <th>Prix</th>
           <th>Date Création</th>
           <th>Actions</th>
@@ -16,19 +18,21 @@
         @for (telephone of telephones; track telephone.idtel; let index = $index; let nbr = $count; let first = $first;
         let last = $last) {
 
-        @if(first) {
+        <!-- @if(first) {
         <h1>Nombre de téléphones : {{ nbr }}</h1>
-        }
+        } -->
 
         <tbody>
           <tr>
-            <td>{{ index + 1 }}</td>
+
             <td>{{ telephone.idtel }}</td>
             <td>
               <img [src]="telephone.logoTel" alt="logo" width="80" height="80">
             </td>
             <td>{{ telephone.nomTel }}</td>
+
             <td>{{ telephone.desTEL }}</td>
+            <td>{{telephone.statut.nomSat}}</td>
             <td>{{ telephone.prixTel }} DT</td>
             <td>{{ telephone.dateCreation | date:'dd/MM/yyyy' }}</td>
             <td>

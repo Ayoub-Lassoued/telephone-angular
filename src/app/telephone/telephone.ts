@@ -15,7 +15,7 @@ export class Telephoness implements OnInit {
   telephones!: Telephone[];
 
   constructor(private telephoneService: TelephoneService) {
-    // Charger la liste des téléphones dès la création du component
+
     this.telephones = telephoneService.listetelephones();
   }
 
@@ -26,7 +26,7 @@ export class Telephoness implements OnInit {
     let conf = confirm("Voulez-vous vraiment supprimer ce téléphone ?");
     if (conf) {
       this.telephoneService.supprimerTelephone(tel);
-      // Mettre à jour la liste après suppression
+
       this.telephones = this.telephoneService.telephones;
     }
   }
