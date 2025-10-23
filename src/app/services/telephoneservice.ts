@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Telephone } from '../model/telephone.model';
 import { Statut } from '../model/statut.model';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -10,6 +11,8 @@ export class TelephoneService {
     telephones: Telephone[] = [];
     telephone!: Telephone;
     Statuts!: Statut[];
+    telephoneRecherche!: Telephone[];
+
 
 
 
@@ -75,4 +78,23 @@ export class TelephoneService {
         this.ajouterTelephone(f);
         this.trierTelephone();
     }
+    rechercheParStatut(IdStatus: number): Telephone[] {
+        this.telephoneRecherche = [];
+        this.telephones.forEach(curr => {
+            if (curr.statut.idSat == IdStatus) {
+                this.telephoneRecherche.push(curr);
+            }
+        })
+        return this.telephoneRecherche;
+    }
+
+    listtel1(): Observable<Telephone[]> {
+        return of(this.telephones);
+    }
+
+
+
+
+
 }
+

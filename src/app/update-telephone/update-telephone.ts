@@ -22,7 +22,7 @@ export class UpdateTelephone implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
+    private router: Router, 
     private telephoneService: TelephoneService
   ) { }
 
@@ -31,6 +31,8 @@ export class UpdateTelephone implements OnInit {
     this.Status = this.telephoneService.listeCategories();
     console.log(this.currentTelephone);
     this.currentTelephone = this.telephoneService.consulterTelephone(this.activatedRoute.snapshot.params['id']);
+    this.updatedSatId = this.currentTelephone.statut.idSat;
+
 
   }
 

@@ -1,0 +1,59 @@
+<div class="container">
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+      <label>Nom téléphone en tapant </label>
+      <!-- <input #nom [(ngModel)]="searchTerm" (keyup)="onKeyUp(searchTerm)" name="searchTerm" class="form-control">-->
+      <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+      <!-- recherche bel pip menghir le tetaawen fonction -->
+
+    </div>
+  </form>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+
+        @if (telephones.length > 0) {
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Logo</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Statut</th>
+            <th>Prix</th>
+            <th>Date Création</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (telephone of telephones | searchFilter:searchTerm; track telephone.idtel) {
+          <tr>
+            <td>{{ telephone.idtel }}</td>
+            <td><img [src]="telephone.logoTel" alt="logo" width="80" height="80"></td>
+            <td>{{ telephone.nomTel }}</td>
+            <td>{{ telephone.desTEL }}</td>
+            <td>{{ telephone.statut.nomSat }}</td>
+            <td>{{ telephone.prixTel }} DT</td>
+            <td>{{ telephone.dateCreation | date:'dd/MM/yyyy' }}</td>
+          </tr>
+          }
+          @empty {
+          <tr>
+            <td colspan="8">Aucun téléphone trouvé !</td>
+          </tr>
+          }
+        </tbody>
+        } @else {
+        <tbody>
+          <tr>
+            <td colspan="8">Chargement des téléphones...</td>
+          </tr>
+        </tbody>
+        }
+
+      </table>
+    </div>
+  </div>
+</div>

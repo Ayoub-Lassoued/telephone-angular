@@ -24,8 +24,8 @@
       <label>Description</label>
       <textarea [(ngModel)]="currentTelephone.desTEL" name="desTEL" class="form-control"></textarea>
     </div>
-    <label>statu</label>
-    <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updatedSatId">
+    <label>statut</label>
+    <select    class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updatedSatId">
       @for(i of Status; track i.idSat)
       {
       <option [value]="i.idSat"> {{i.nomSat}} </option>
