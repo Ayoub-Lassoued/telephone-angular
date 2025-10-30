@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Telephone } from '../model/telephone.model';
 import { TelephoneService } from '../services/telephoneservice';
 import { RouterLink } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-telephones',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, FormsModule],
   templateUrl: './telephone.html',
   styleUrl: './telephone.css'
 })

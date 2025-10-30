@@ -1,62 +1,102 @@
-<div class="container">
-  <div>
-    <h2>Ajouter un Téléphone :</h2>
-  </div>
-  <form>
+<div class="container mt-4">
+  <h2>Ajouter un Nouveau Téléphone :</h2>
+
+  <form [formGroup]="myForm" (ngSubmit)="addTelephone()">
 
 
-    <div class="col-sm-2 col-md-2 col-lg-2">
-      <label>ID Téléphone</label>
-      <input type="text" [(ngModel)]="newTelephone.idtel" name="idtel" class="form-control">
+    <div class="form-group">
+      <label>ID Téléphone :</label>
+      <input type="text" class="form-control" formControlName="idtel">
     </div>
+    <span *ngIf="myForm.controls['idtel'].hasError('required') && myForm.controls['idtel'].touched" class="text-danger">
+      ⚠️ L'ID est obligatoire
+    </span>
 
 
-
-    <div class="col-sm-4 col-md-4 col-lg-4">
-      <label>Logo Téléphone (URL)</label>
-      <input type="text" [(ngModel)]="newTelephone.logoTel" name="logoTel" class="form-control">
+    <div class="form-group">
+      <label>Logo (URL) :</label>
+      <input type="text" class="form-control" formControlName="logoTel">
     </div>
+    <span *ngIf="myForm.controls['logoTel'].hasError('required') && myForm.controls['logoTel'].touched"
+      class="text-danger">
+      ⚠️ Le logo est obligatoire
+    </span>
 
 
-    <div class="col-sm-4 col-md-4 col-lg-4">
-      <label>Nom Téléphone</label>
-      <input type="text" [(ngModel)]="newTelephone.nomTel" name="nomTel" class="form-control">
+    <div class="form-group">
+      <label>Nom Téléphone :</label>
+      <input type="text" class="form-control" formControlName="nomTel">
     </div>
+    <span *ngIf="myForm.controls['nomTel'].hasError('required') && myForm.controls['nomTel'].touched"
+      class="text-danger">
+      ⚠️ Le nom est obligatoire
+    </span>
+    <span *ngIf="myForm.controls['nomTel'].hasError('minlength') && myForm.controls['nomTel'].touched"
+      class="text-danger">
+      ⚠️ Le nom doit contenir au moins 6 caractères
+    </span>
 
 
-    <div class="col-sm-6 col-md-6 col-lg-6">
-      <label>Description</label>
-      <textarea [(ngModel)]="newTelephone.desTEL" name="desTEL" class="form-control"></textarea>
+    <div class="form-group">
+      <label>Email Téléphone :</label>
+      <input type="email" class="form-control" formControlName="emailtel">
     </div>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-      <label>statut</label>
-      <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="newIdSat">
-        @for(i of Statuts; track i.idSat){
-        <option [value]="i.idSat"> {{i.nomSat}} </option>
-        }
+    <span *ngIf="myForm.controls['emailtel'].hasError('required') && myForm.controls['emailtel'].touched"
+      class="text-danger">
+      ⚠️ L'email est obligatoire
+    </span>
+    <span *ngIf="myForm.controls['emailtel'].hasError('email') && myForm.controls['emailtel'].touched"
+      class="text-danger">
+      ⚠️ Format d'email invalide
+    </span>
+
+
+    <div class="form-group">
+      <label>Description :</label>
+      <textarea class="form-control" formControlName="desTEL"></textarea>
+    </div>
+    <span *ngIf="myForm.controls['desTEL'].hasError('required') && myForm.controls['desTEL'].touched"
+      class="text-danger">
+      ⚠️ La description est obligatoire
+    </span>
+
+
+    <div class="form-group">
+      <label>Statut :</label>
+      <select class="form-control" formControlName="statut">
+        <option value="">-- Sélectionner --</option>
+        <option *ngFor="let s of Statuts" [value]="s.idSat">{{ s.nomSat }}</option>
       </select>
     </div>
+    <span *ngIf="myForm.controls['statut'].hasError('required') && myForm.controls['statut'].touched"
+      class="text-danger">
+      ⚠️ Veuillez sélectionner un statut
+    </span>
 
 
-    <div class="col-sm-2 col-md-2 col-lg-2">
-      <label>Prix Téléphone</label>
-      <input type="number" [(ngModel)]="newTelephone.prixTel" name="prixTel" class="form-control">
+    <div class="form-group">
+      <label>Prix Téléphone :</label>
+      <input type="number" class="form-control" formControlName="prixTel">
     </div>
+    <span *ngIf="myForm.controls['prixTel'].hasError('required') && myForm.controls['prixTel'].touched"
+      class="text-danger">
+      ⚠️ Le prix est obligatoire
+    </span>
+    <span *ngIf="myForm.controls['prixTel'].hasError('min') && myForm.controls['prixTel'].touched" class="text-danger">
+      ⚠️ Le prix doit être ≥ 0
+    </span>
 
-
-    <div class="col-sm-4 col-md-4 col-lg-4">
-      <label>Date création</label>
-      <input type="date" [(ngModel)]="newTelephone.dateCreation" name="dateCreation" class="form-control">
+    <div class="form-group">
+      <label>Date création :</label>
+      <input type="date" class="form-control" formControlName="dateCreation" min="2020-01-01" max="2025-12-31">
     </div>
+    <span *ngIf="myForm.controls['dateCreation'].hasError('required') && myForm.controls['dateCreation'].touched"
+      class="text-danger">
+      ⚠️ La date est obligatoire
+    </span>
 
 
-    <div class="mt-2">
-      <button type="submit" (click)="addTelephone()" class="btn btn-success">
-        Ajouter
-      </button>
-    </div>
-
-
+    <button type="submit" class="btn btn-success" [disabled]="myForm.invalid">Ajouter</button>
 
   </form>
 </div>

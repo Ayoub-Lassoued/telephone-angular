@@ -8,5 +8,6 @@ export class Telephone {
     prixTel!: number;
     dateCreation!: Date;
     statut!: Statut;
+    emailtel!: String;
 
 }

@@ -26,10 +26,10 @@ export class TelephoneService {
         }, { idSat: 4, nomSat: "Bientôt disponible" },
         ];
         this.telephones = [
-            { idtel: 1, logoTel: "assets/img/samsung.png", nomTel: "Samsung Galaxy S21", desTEL: "Smartphone haut de gamme", prixTel: 2800, dateCreation: new Date("2021-03-15"), statut: { idSat: 1, nomSat: "en stock" } }
+            { idtel: 1, logoTel: "assets/img/samsung.png", nomTel: "Samsung Galaxy S21", desTEL: "Smartphone haut de gamme", prixTel: 2800, dateCreation: new Date("2021-03-15"), statut: { idSat: 1, nomSat: "en stock" }, emailtel: "samsung@gmail.com" }
             ,
-            { idtel: 2, logoTel: "assets/img/iphone.png", nomTel: "iPhone 13", desTEL: "Dernier modèle Apple", prixTel: 4200, dateCreation: new Date("2021-09-24"), statut: { idSat: 2, nomSat: "en commande 48h" } },
-            { idtel: 3, logoTel: "assets/img/oppo.png", nomTel: "Oppo Reno 6", desTEL: "Téléphone milieu de gamme", prixTel: 1600, dateCreation: new Date("2021-06-10"), statut: { idSat: 3, nomSat: "rupture" } }
+            { idtel: 2, logoTel: "assets/img/iphone.png", nomTel: "iPhone 13", desTEL: "Dernier modèle Apple", prixTel: 4200, dateCreation: new Date("2021-09-24"), statut: { idSat: 2, nomSat: "en commande 48h" }, emailtel: "iphone@icloud.com" },
+            { idtel: 3, logoTel: "assets/img/oppo.png", nomTel: "Oppo Reno 6", desTEL: "Téléphone milieu de gamme", prixTel: 1600, dateCreation: new Date("2021-06-10"), statut: { idSat: 3, nomSat: "rupture" }, emailtel: "oppo@gmail.com" }
         ];
     }
 
