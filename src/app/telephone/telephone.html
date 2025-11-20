@@ -30,19 +30,25 @@
               <img [src]="telephone.logoTel" alt="logo" width="80" height="80">
             </td>
             <td>{{ telephone.nomTel }}</td>
-              <td>{{telephone.emailtel}}</td>
+            <td>{{telephone.emailtel}}</td>
 
             <td>{{ telephone.desTEL }}</td>
             <td>{{telephone.statut.nomSat}}</td>
-          
+
             <td>{{ telephone.prixTel }} DT</td>
             <td>{{ telephone.dateCreation | date:'dd/MM/yyyy' }}</td>
             <td>
+              @if(auth.isAdmin()){
               <a class="btn btn-danger" (click)="supprimerTelephone(telephone)">Supprimer</a>
+              }
             </td>
+
             <td>
+              @if(auth.isAdmin()){
               <a class="btn btn-success" [routerLink]="['/updateTelephone', telephone.idtel]">Modifier</a>
+              }
             </td>
+
           </tr>
         </tbody>
         }

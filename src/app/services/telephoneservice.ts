@@ -12,12 +12,6 @@ export class TelephoneService {
     telephone!: Telephone;
     Statuts!: Statut[];
     telephoneRecherche!: Telephone[];
-
-
-
-
-
-
     constructor() {
         this.Statuts = [{ idSat: 1, nomSat: "en stock" },
         { idSat: 2, nomSat: "en commande 48h" },
@@ -34,6 +28,9 @@ export class TelephoneService {
     }
 
     listetelephones(): Telephone[] {
+        return this.telephones;
+    }
+    getTelephones(): Telephone[] {
         return this.telephones;
     }
 

@@ -4,6 +4,7 @@ import { Telephone } from '../model/telephone.model';
 import { TelephoneService } from '../services/telephoneservice';
 import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Auth } from '../services/authservice';
 
 @Component({
   selector: 'app-telephones',
@@ -15,9 +16,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class Telephoness implements OnInit {
   telephones!: Telephone[];
 
-  constructor(private telephoneService: TelephoneService) {
+  constructor(private telephoneService: TelephoneService, public auth: Auth) {
+    this.telephones = this.telephoneService.getTelephones();
 
-    this.telephones = telephoneService.listetelephones();
+
   }
 
   ngOnInit() { }

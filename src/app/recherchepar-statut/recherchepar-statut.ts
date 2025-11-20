@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { Telephone } from '../model/telephone.model';
 import { TelephoneService } from '../services/telephoneservice';
 import { Statut } from '../model/statut.model';
+import { Auth } from '../services/authservice';
+
 
 
 
@@ -21,7 +23,8 @@ export class RechercheparStatut implements OnInit {
   IdStatus!: number;
 
 
-  constructor(private telephoneService: TelephoneService) {
+  constructor(private telephoneService: TelephoneService, public auth: Auth) {
+
 
 
   }
@@ -39,9 +42,9 @@ export class RechercheparStatut implements OnInit {
     let conf = confirm("Voulez-vous vraiment supprimer ce téléphone ?");
     if (conf) {
       this.telephoneService.supprimerTelephone(tel);
-       this.telephones = this.telephoneService.rechercheParStatut(this.IdStatus);
+      this.telephones = this.telephoneService.rechercheParStatut(this.IdStatus);
 
-      
+
     }
   }
 
